@@ -37,15 +37,7 @@ module GpsModule {
         telemetry Latitude: F64
         telemetry Longitude: F64
         telemetry Altitude: F32
-
-        # @ other port
-        # output port deallocate: Fw.BufferSend
-
-        # @ Port for receiving data
-        # async input port UartRead: Drv.ByteStreamManager
-
-        
-
+      
 
         ##############################################################################
         #### Uncomment the following examples to start customizing your component ####
