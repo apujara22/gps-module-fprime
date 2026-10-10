@@ -21,9 +21,12 @@ module GpsModule {
             format "There was an error parsing the string"
 
         @ Event that reports UTC time
-        event ReportUtcTime(UtcTime: F64) \
-            severity activity high \
-            format "Current UTC time is {}"
+        event ReportUtcTime(
+            hours: U32,
+            minutes: U32,
+            seconds: U32
+        ) severity activity high \
+        format "Current UTC time is {}:{}:{} UTC"
 
         @ Event that outputs GPS reading
         event GpsReading(lat: F64, lon: F64, alt: F32) \

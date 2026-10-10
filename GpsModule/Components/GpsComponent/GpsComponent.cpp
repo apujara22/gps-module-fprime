@@ -216,7 +216,12 @@ void GpsComponent ::REPORT_UTCTIME_cmdHandler(
     U32 cmdSeq
 ) {
     if (m_hasValidUtcTime) {
-        this->log_ACTIVITY_HI_ReportUtcTime(m_utcTime);
+        const U32 totalSeconds = static_cast<U32>(m_utcTime);
+        const U32 hours = totalSeconds / 3600;
+        const U32 minutes = (totalSeconds % 3600) / 60;
+        const U32 seconds = totalSeconds % 60;
+
+        this->log_ACTIVITY_HI_ReportUtcTime(hours, minutes, seconds);
         this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
     } else {
         this->log_ACTIVITY_HI_ParseError();
