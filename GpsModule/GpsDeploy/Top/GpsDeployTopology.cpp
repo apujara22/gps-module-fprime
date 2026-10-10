@@ -66,8 +66,9 @@ void configureTopology() {
     gpsBuffMgrBins.bins[0].numBuffers = 10; // arbitrary
     bufferManager.setup(300, 0, mallocator, gpsBuffMgrBins);
 
+    // needed to modify these from Drv:LinuxUartDriver b/c of new version
     bool uart_success = serialDriver.open("/dev/serial0",
-            Drv::PosixUartDriver::BAUD_38400,
+            Drv::PosixUartDriver::BAUD_38400,   // needed to change from 9600. try playing around with this
             Drv::PosixUartDriver::NO_FLOW,
             Drv::PosixUartDriver::PARITY_NONE,
             1024);
